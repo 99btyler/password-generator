@@ -15,6 +15,9 @@ import java.awt.*;
 
 public class Main extends Application {
 
+    private static Button button;
+    private static Label label;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -24,15 +27,11 @@ public class Main extends Application {
 
         primaryStage.setTitle("password-generator");
 
-        Button button = new Button("Generate Password");
+        button = new Button("Generate Password");
 
-        Label label = new Label("...");
-        label.setPadding(new Insets(10, 0, 0, 0));
-        label.setFont(new Font(25));
+        label = new Label("aaa0aaa#aaa0");
 
         VBox layout = new VBox();
-        layout.setPadding(new Insets(100, 100, 100, 100));
-        layout.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(button, label);
 
         primaryStage.setScene(new Scene(layout));
