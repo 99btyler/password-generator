@@ -23,10 +23,16 @@ public class Main extends Application {
 
         label = new Label("aaa0aaa#aaa0");
 
-        VBox layout = new VBox();
+        // Set layout
+        final VBox layout = new VBox();
         layout.getChildren().addAll(button, label);
 
-        primaryStage.setScene(new Scene(layout));
+        // Set scene
+        final Scene scene = new Scene(layout);
+        scene.getStylesheets().add("Theme.css");
+
+        // Display it
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
