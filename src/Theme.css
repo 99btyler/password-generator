@@ -6,12 +6,12 @@
 }
 
 .button {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #DBDBDB;
     -fx-text-fill: #202020;
 }
 
 .button:hover {
-    -fx-background-color: #F5F5F5;
+    -fx-background-color: #FFFFFF;
 }
 
 .label {
