@@ -56,17 +56,17 @@ public class Main extends Application {
                 if (ii == 3) {
 
                     if (i == 0) {
-                        stringBuilder.append(pNumbers.charAt(random.nextInt(pNumbers.length())));
+                        stringBuilder.append(getRandomCharacter(pNumbers));
                     } else {
-                        stringBuilder.append(pSpecialCharacters.charAt(random.nextInt(pSpecialCharacters.length())));
+                        stringBuilder.append(getRandomCharacter(pSpecialCharacters));
                     }
 
                 } else {
 
                     if (i == 4) {
-                        stringBuilder.append(pLettersLower.charAt(random.nextInt(pLettersLower.length())));
+                        stringBuilder.append(getRandomCharacter(pLettersLower));
                     } else {
-                        stringBuilder.append(pLettersUpper.charAt(random.nextInt(pLettersUpper.length())));
+                        stringBuilder.append(getRandomCharacter(pLettersUpper));
                     }
 
                 }
@@ -76,6 +76,10 @@ public class Main extends Application {
 
         label.setText(stringBuilder.toString());
 
+    }
+
+    private Character getRandomCharacter(String string) {
+        return string.charAt(random.nextInt(string.length()));
     }
 
 }
