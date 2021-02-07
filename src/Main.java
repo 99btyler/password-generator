@@ -9,8 +9,8 @@ import java.util.Random;
 
 public class Main extends Application {
 
-    private static Button button = new Button("Generate Password");
-    private static Label label = new Label("...");
+    private final Button button = new Button("Generate Password");
+    private final Label label = new Label("...");
 
     private final String pLettersLower = "abcdefghijklmnopqrstuvwxyz";
     private final String pLettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
