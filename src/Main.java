@@ -10,7 +10,7 @@ import java.util.Random;
 public class Main extends Application {
 
     private final Button button = new Button("Generate Password");
-    private final Label label = new Label("...");
+    private final Label label = new Label("✖✖✖✖✖✖✖✖✖✖✖✖");
 
     private final String pLettersLower = "abcdefghijklmnopqrstuvwxyz";
     private final String pLettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -47,28 +47,50 @@ public class Main extends Application {
 
     private void generatePassword() {
 
-        // Default: AAA0aaa-AAA-
+        final int amountOfChunks = 3; // algorithm expects 3 or less
+        final int charsPerChunk = 4; // best if 2 or greater
 
-        StringBuilder stringBuilder = new StringBuilder(12);
+        final StringBuilder stringBuilder = new StringBuilder(amountOfChunks * charsPerChunk);
 
-        for (int i = 0; i < stringBuilder.capacity(); i+=4) {
-            for (int ii = 0; ii < 4; ii++) {
+        for (int chunk = 0; chunk < amountOfChunks; chunk++) {
+            for (int i = 0; i < charsPerChunk; i++) {
 
-                if (ii == 3) {
+                switch (chunk) {
 
-                    if (i == 0) {
-                        stringBuilder.append(getRandomCharacter(pNumbers));
-                    } else {
-                        stringBuilder.append(getRandomCharacter(pSpecialCharacters));
-                    }
+                    case 0:
 
-                } else {
+                        if (i == charsPerChunk - 1) {
+                            stringBuilder.append(getRandomChar(pNumbers));
+                        } else {
+                            stringBuilder.append(getRandomChar(pLettersUpper));
+                        }
 
-                    if (i == 4) {
-                        stringBuilder.append(getRandomCharacter(pLettersLower));
-                    } else {
-                        stringBuilder.append(getRandomCharacter(pLettersUpper));
-                    }
+                        break;
+
+                    case 1:
+
+                        if (i == charsPerChunk - 1) {
+                            stringBuilder.append(getRandomChar(pSpecialCharacters));
+                        } else {
+                            stringBuilder.append(getRandomChar(pLettersLower));
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (i == charsPerChunk - 1) {
+                            stringBuilder.append(getRandomChar(pSpecialCharacters));
+                        } else {
+                            stringBuilder.append(getRandomChar(pLettersUpper));
+                        }
+
+                        break;
+
+                    default:
+                        // amountOfChunks is greater than 3
+                        stringBuilder.append("✖");
+                        break;
 
                 }
 
@@ -79,7 +101,7 @@ public class Main extends Application {
 
     }
 
-    private Character getRandomCharacter(String string) {
+    private Character getRandomChar(String string) {
         return string.charAt(random.nextInt(string.length()));
     }
 
