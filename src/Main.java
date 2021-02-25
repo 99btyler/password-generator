@@ -15,7 +15,7 @@ public class Main extends Application {
     private final String pLettersLower = "abcdefghijklmnopqrstuvwxyz";
     private final String pLettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String pNumbers = "0123456789";
-    private final String pSpecialCharacters = "-=[];,./~!@#$%^&*()_+{}:<>?";
+    private final String pSpecialCharacters = "!@#$%^&*()-=_+";
 
     private final Random random = new Random();
 
