@@ -1,5 +1,5 @@
 # password-generator
-![password-generator gif](https://i.imgur.com/Gd9JZGt.gif)
+![password-generator gif](https://i.imgur.com/gi49QnN.gif)
 
 Get a strong password with a click using JavaFX
 
