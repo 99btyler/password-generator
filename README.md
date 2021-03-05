@@ -5,4 +5,4 @@
 Get this project set up locally
 ### Setting up
 * Clone this repository
-* Using a Java IDE, open src
+* Using a text editor, open src
