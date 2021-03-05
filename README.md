@@ -1,8 +1,8 @@
 # password-generator
 ![password-generator gif](https://i.imgur.com/gi49QnN.gif)
 
-Get a strong password with a click using JavaFX
-
-# Using this yourself
-1. Download this repository
-2. Using a Java IDE, open folder
+# Getting Started
+Get this project set up locally
+### Setting up
+* Clone this repository
+* Using a Java IDE, open src
