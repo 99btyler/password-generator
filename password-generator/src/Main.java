@@ -63,13 +63,13 @@ public class Main extends Application {
 
                 if (i == (charsPerChunk - 1)) {
 
-                    final char randomEndTypeChar = endType.charAt(random.nextInt(endType.length()));
-                    stringBuilder.append(randomEndTypeChar);
+                    final char etChar = endType.charAt(random.nextInt(endType.length()));
+                    stringBuilder.append(etChar);
 
                 } else {
 
-                    final char randomCoreTypeChar = currentCoreType.charAt(random.nextInt(currentCoreType.length()));
-                    stringBuilder.append(randomCoreTypeChar);
+                    final char ctChar = currentCoreType.charAt(random.nextInt(currentCoreType.length()));
+                    stringBuilder.append(ctChar);
 
                 }
 
