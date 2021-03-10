@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,15 +10,11 @@ import java.util.Random;
 
 public class Main extends Application {
 
-    private final Button button = new Button("Generate Password");
-    private final Label label = new Label("✖✖✖✖✖✖✖✖✖✖✖✖");
-
-    private final String pLettersLower = "abcdefghijklmnopqrstuvwxyz";
-    private final String pLettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private final String pNumbers = "0123456789";
-    private final String pSpecialCharacters = "!@#$%^&*()-=_+";
-
+    private final String[] coreTypes = {"abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789"};
+    private final String endType = "!@#$%^&*()-=_+";
     private final Random random = new Random();
+
+    final SimpleStringProperty password = new SimpleStringProperty("✖✖✖✖✖✖✖✖✖✖✖✖");
 
     public static void main(String[] args) {
         launch(args);
@@ -26,20 +23,20 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("password-generator");
-        primaryStage.setResizable(false);
-
+        // Widgets
+        final Button button = new Button("Generate Password");
         button.setOnMouseClicked(e -> generatePassword());
 
-        // Set layout
-        final VBox layout = new VBox();
-        layout.getChildren().addAll(button, label);
+        final Label label = new Label();
+        label.textProperty().bind(password);
 
-        // Set scene
-        final Scene scene = new Scene(layout);
+        // Scene
+        final Scene scene = new Scene(new VBox(button, label));
         scene.getStylesheets().add("Theme.css");
 
-        // Display it
+        // Stage
+        primaryStage.setTitle("password-generator");
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -47,62 +44,33 @@ public class Main extends Application {
 
     private void generatePassword() {
 
-        final int amountOfChunks = 3; // algorithm expects 3 or less
-        final int charsPerChunk = 4; // best if 2 or greater
-
+        final int amountOfChunks = 3;
+        final int charsPerChunk = 4;
         final StringBuilder stringBuilder = new StringBuilder(amountOfChunks * charsPerChunk);
 
         for (int chunk = 0; chunk < amountOfChunks; chunk++) {
+
+            final String randomCoreType = coreTypes[random.nextInt(coreTypes.length)];
+
             for (int i = 0; i < charsPerChunk; i++) {
 
-                switch (chunk) {
+                if (i == (charsPerChunk - 1)) {
 
-                    case 0:
+                    final char randomEndTypeChar = endType.charAt(random.nextInt(endType.length()));
+                    stringBuilder.append(randomEndTypeChar);
 
-                        if (i == charsPerChunk - 1) {
-                            stringBuilder.append(getRandomChar(pNumbers));
-                        } else {
-                            stringBuilder.append(getRandomChar(pLettersUpper));
-                        }
+                } else {
 
-                        break;
-
-                    case 1:
-
-                        if (i == charsPerChunk - 1) {
-                            stringBuilder.append(getRandomChar(pSpecialCharacters));
-                        } else {
-                            stringBuilder.append(getRandomChar(pLettersLower));
-                        }
-
-                        break;
-
-                    case 2:
-
-                        if (i == charsPerChunk - 1) {
-                            stringBuilder.append(getRandomChar(pSpecialCharacters));
-                        } else {
-                            stringBuilder.append(getRandomChar(pLettersUpper));
-                        }
-
-                        break;
-
-                    default:
-                        // amountOfChunks is greater than 3
-                        stringBuilder.append("✖");
-                        break;
+                    final char randomCoreTypeChar = randomCoreType.charAt(random.nextInt(randomCoreType.length()));
+                    stringBuilder.append(randomCoreTypeChar);
 
                 }
 
             }
         }
 
-        label.setText(stringBuilder.toString());
+        password.set(stringBuilder.toString());
 
-    }
-
-    private Character getRandomChar(String string) {
-        return string.charAt(random.nextInt(string.length()));
     }
 
 }
