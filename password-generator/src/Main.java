@@ -11,7 +11,10 @@ import java.util.Random;
 public class Main extends Application {
 
     private final String[] coreTypes = {"abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789"};
+    private String currentCoreType = coreTypes[0];
+
     private final String endType = "!@#$%^&*()-=_+";
+
     private final Random random = new Random();
 
     final SimpleStringProperty password = new SimpleStringProperty("✖✖✖✖✖✖✖✖✖✖✖✖");
@@ -50,7 +53,11 @@ public class Main extends Application {
 
         for (int chunk = 0; chunk < amountOfChunks; chunk++) {
 
-            final String randomCoreType = coreTypes[random.nextInt(coreTypes.length)];
+            String newCoreType = currentCoreType;
+            while (newCoreType == currentCoreType) {
+                newCoreType = coreTypes[random.nextInt(coreTypes.length)];
+            }
+            currentCoreType = newCoreType;
 
             for (int i = 0; i < charsPerChunk; i++) {
 
@@ -61,7 +68,7 @@ public class Main extends Application {
 
                 } else {
 
-                    final char randomCoreTypeChar = randomCoreType.charAt(random.nextInt(randomCoreType.length()));
+                    final char randomCoreTypeChar = currentCoreType.charAt(random.nextInt(currentCoreType.length()));
                     stringBuilder.append(randomCoreTypeChar);
 
                 }
