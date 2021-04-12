@@ -5,4 +5,4 @@
 Get this project set up locally
 ### Setting up
 * Clone this repository
-* Using a Java IDE, open (repository)/password-generator
+* Using a Java IDE, open (repository)/PasswordGenerator
