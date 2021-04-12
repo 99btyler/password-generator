@@ -1,3 +1,5 @@
+package com.gmail.__99tylerberinger.passwordgenerator;
+
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.Scene;
