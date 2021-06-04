@@ -18,7 +18,7 @@ public class Main extends Application {
     private final String[] leadingChars = {"abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789"};
     private String currentLeadingChars = leadingChars[0];
 
-    private final String trailingChars = "!@#$%^&*()-=_+";
+    private final String trailingChars = "!@#$%^&*()";
 
     public static void main(String[] args) {
         launch(args);
