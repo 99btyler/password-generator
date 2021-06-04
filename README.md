@@ -1,5 +1,5 @@
 # password-generator
-![password-generator gif](https://i.imgur.com/gi49QnN.gif)
+![password-generator gif](https://i.imgur.com/jZVTB0c.gif)
 
 # Getting Started
 Get this project set up locally
