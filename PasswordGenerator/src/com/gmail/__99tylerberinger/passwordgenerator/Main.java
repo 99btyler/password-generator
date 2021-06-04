@@ -2,9 +2,11 @@ package com.gmail.__99tylerberinger.passwordgenerator;
 
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,18 +33,22 @@ public class Main extends Application {
         final Label labelPassword = new Label();
         labelPassword.textProperty().bind(password);
 
+        final Separator separator1 = new Separator(Orientation.HORIZONTAL);
+
         final Label labelAmountOfChunks = new Label("amount of chunks:");
         final Spinner<Integer> spinnerAmountOfChunks = new Spinner<>(2, 10, 3, 1);
 
         final Label labelCharsPerChunk = new Label("chars per chunk:");
         final Spinner<Integer> spinnerCharsPerChunk = new Spinner<>(3, 10, 4, 1);
 
+        final Separator separator2 = new Separator(Orientation.HORIZONTAL);
+
         final Button buttonGenerate = new Button("GENERATE");
         buttonGenerate.setOnMouseClicked(e -> generate(spinnerAmountOfChunks.getValue(), spinnerCharsPerChunk.getValue()));
 
         // Scene
-        final Scene scene = new Scene(new VBox(labelPassword, labelAmountOfChunks, spinnerAmountOfChunks, labelCharsPerChunk, spinnerCharsPerChunk, buttonGenerate));
-        // TODO: scene.getStylesheets().add("Theme.css");
+        final Scene scene = new Scene(new VBox(labelPassword, separator1, labelAmountOfChunks, spinnerAmountOfChunks, labelCharsPerChunk, spinnerCharsPerChunk, separator2, buttonGenerate));
+        scene.getStylesheets().add("style.css");
 
         // Stage
         primaryStage.setTitle("password-generator");

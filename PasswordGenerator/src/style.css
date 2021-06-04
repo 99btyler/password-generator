@@ -1,0 +1,8 @@
+.root {
+    -fx-padding: 20px;
+    -fx-font-size: 20px;
+}
+
+.separator {
+    -fx-padding: 10px 0px 20px 0px;
+}
