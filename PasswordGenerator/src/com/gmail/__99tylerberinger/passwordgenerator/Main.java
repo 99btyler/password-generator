@@ -36,10 +36,10 @@ public class Main extends Application {
         final Separator separator1 = new Separator(Orientation.HORIZONTAL);
 
         final Label labelAmountOfChunks = new Label("amount of chunks:");
-        final Spinner<Integer> spinnerAmountOfChunks = new Spinner<>(2, 10, 3, 1);
+        final Spinner<Integer> spinnerAmountOfChunks = new Spinner<>(2, 4, 3, 1);
 
         final Label labelCharsPerChunk = new Label("chars per chunk:");
-        final Spinner<Integer> spinnerCharsPerChunk = new Spinner<>(3, 10, 4, 1);
+        final Spinner<Integer> spinnerCharsPerChunk = new Spinner<>(3, 4, 4, 1);
 
         final Separator separator2 = new Separator(Orientation.HORIZONTAL);
 
